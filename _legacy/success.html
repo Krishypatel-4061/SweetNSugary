@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! | Sweet N Sugary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream-puff': '#F9F5F0',
+                        'warm-cocoa': '#5D4037',
+                        'dusty-rose': '#D4A59A',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-cream-puff text-warm-cocoa font-sans antialiased min-h-screen flex items-center justify-center">
+
+    <div
+        class="bg-white p-12 rounded-3xl shadow-xl text-center max-w-lg mx-6 transform transition-all hover:scale-105 duration-500">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-serif font-bold mb-4">Message Sent!</h1>
+        <p class="text-lg opacity-80 mb-8">
+            Thank you for reaching out. We have received your inquiry and will get back to you shortly! 🍰
+        </p>
+
+        <a href="index.html"
+            class="inline-block bg-warm-cocoa text-cream-puff font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:bg-opacity-90 transition">
+            Back to Home
+        </a>
+    </div>
+
+</body>
+
+</html>

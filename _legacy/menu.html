@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Sweet N Sugary</title>
+    <meta name="description" content="Explore our menu of custom cakes, cookies, and jars. Made with Love in Jamnagar.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream-puff': '#F9F5F0',
+                        'warm-cocoa': '#5D4037',
+                        'dusty-rose': '#D4A59A',
+                        'sage-green': '#8FBC8F',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.5s;
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-cream-puff text-warm-cocoa font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav
+        class="flex justify-between items-center py-4 px-6 md:px-16 w-full z-30 bg-white/90 backdrop-blur-md md:bg-cream-puff border-b border-warm-cocoa/10 sticky top-0 shadow-sm md:shadow-none">
+        <a href="index.html" class="flex items-center gap-2">
+            <img src="images/logo.png" alt="Sweet N Sugary Logo"
+                class="h-12 w-auto rounded-full border border-warm-cocoa/10">
+            <div class="text-xl font-serif font-bold tracking-wide md:hidden">Sweet N Sugary</div>
+            <div class="hidden md:block text-2xl font-serif font-bold tracking-wide">Sweet N Sugary</div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest uppercase items-center">
+            <a href="index.html" class="hover:text-dusty-rose transition">Home</a>
+            <a href="menu.html" class="hover:text-dusty-rose transition text-dusty-rose">Menu</a>
+            <!-- <a href="#" class="hover:text-dusty-rose transition">About</a> -->
+            <a href="contact.html"
+                class="px-6 py-2 border border-warm-cocoa rounded-full hover:bg-warm-cocoa hover:text-cream-puff transition">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-warm-cocoa focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream-puff z-20 pt-24 px-6 md:hidden">
+        <div class="flex flex-col space-y-6 text-center text-xl font-serif font-bold text-warm-cocoa">
+            <a href="index.html" class="hover:text-dusty-rose">Home</a>
+            <a href="menu.html" class="hover:text-dusty-rose">Menu</a>
+            <!-- <a href="#" class="hover:text-dusty-rose">About</a> -->
+            <a href="contact.html" class="hover:text-dusty-rose">Contact Us</a>
+            <div class="pt-8 border-t border-warm-cocoa/10">
+                <a href="https://wa.me/919726805395"
+                    class="block w-full bg-warm-cocoa text-cream-puff py-3 rounded-full text-base font-sans">Order on
+                    WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="py-20 text-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-dusty-rose opacity-10 rounded-full blur-3xl">
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <span class="text-dusty-rose font-bold tracking-widest uppercase text-sm mb-4 block">Handcrafted
+                Delights</span>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">Our Menu</h1>
+            <p class="max-w-2xl mx-auto text-lg text-warm-cocoa/80 mb-8">
+                Explore our menu of handcrafted delights! From customized wedding cakes to eggless cookies and tea-time
+                treats. The sweetest menu in Jamnagar, Gujarat.
+            </p>
+            <button onclick="document.getElementById('flavor-guide').showModal()"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-sage-green text-white rounded-full font-bold hover:bg-opacity-90 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                View Flavor Guide
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Sections -->
+    <main class="container mx-auto px-6 pb-24">
+
+        <!-- Custom Cakes -->
+        <section class="mb-20">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-serif font-bold">Custom Cakes</h2>
+                <div class="h-px bg-warm-cocoa/20 flex-grow"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="group fade-in delay-100">
+                    <div class="overflow-hidden rounded-xl aspect-[4/5] mb-4">
+                        <img src="https://www.womangettingmarried.com/wp-content/uploads/2024/11/elegant-winter-wedding-cake.jpg"
+                            alt="Wedding Cake"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif mb-1">Wedding Tier Cakes</h3>
+                            <p class="text-sm opacity-70">Elegant fondant designs</p>
+                        </div>
+                        <span class="text-dusty-rose font-bold">Custom</span>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="group fade-in delay-200">
+                    <div class="overflow-hidden rounded-xl aspect-[4/5] mb-4">
+                        <img src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Bento Cake"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif mb-1">Bento Cakes</h3>
+                            <p class="text-sm opacity-70">Trending mini lunchbox cakes</p>
+                        </div>
+                        <span class="text-dusty-rose font-bold">Start ₹450</span>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="group fade-in delay-300">
+                    <div class="overflow-hidden rounded-xl aspect-[4/5] mb-4">
+                        <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Theme Cake"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold font-serif mb-1">Themed Birthday Cakes</h3>
+                            <p class="text-sm opacity-70">Superheroes, Cartoons, Floral</p>
+                        </div>
+                        <span class="text-dusty-rose font-bold">Custom</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cookies & Jars -->
+        <section class="mb-20">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-serif font-bold">Cookies & Jars</h2>
+                <div class="h-px bg-warm-cocoa/20 flex-grow"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group fade-in delay-100">
+                    <div class="overflow-hidden rounded-xl aspect-square mb-4">
+                        <img src="https://lifemadesweeter.com/wp-content/uploads/The-Best-Christmas-Cookie-Box-recipe-500x500.jpg"
+                            alt="Cookies"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold font-serif mb-1">Assorted Cookie Box</h3>
+                    <p class="text-sm opacity-70">Choco-chip, Oatmeal, Butter</p>
+                </div>
+                <div class="group fade-in delay-200">
+                    <div class="overflow-hidden rounded-xl aspect-square mb-4">
+                        <img src="https://thumbs.dreamstime.com/b/carrot-cake-jar-pecan-nuts-blueberry-cream-cheese-frosting-82536927.jpg"
+                            alt="Cake Jars"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold font-serif mb-1">Cake Jars</h3>
+                    <p class="text-sm opacity-70">Layers of cake and frosting</p>
+                </div>
+                <div class="group fade-in delay-300">
+                    <div class="overflow-hidden rounded-xl aspect-square mb-4">
+                        <img src="https://media.istockphoto.com/id/502630506/photo/chestnut-brownies-with-chocolate-icing.jpg?s=612x612&w=0&k=20&c=TGL4HeLowFrjMohDY3g4P-KAcfGdimik5ZAg3bHL0gg="
+                            alt="Brownies"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-xl font-bold font-serif mb-1">Fudgy Brownies</h3>
+                    <p class="text-sm opacity-70">Box of 4/6/12</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ready to Eat -->
+        <section>
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-3xl font-serif font-bold">Ready-to-Eat Treats</h2>
+                <div class="h-px bg-warm-cocoa/20 flex-grow"></div>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+                    <div class="text-3xl mb-3">🧁</div>
+                    <h3 class="font-bold font-serif">Cupcakes</h3>
+                    <p class="text-xs opacity-60">Vanilla, Chocolate, Red Velvet</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+                    <div class="text-3xl mb-3">🍞</div>
+                    <h3 class="font-bold font-serif">Tea Cakes</h3>
+                    <p class="text-xs opacity-60">Mawa, Banana Walnut</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+                    <div class="text-3xl mb-3">🍩</div>
+                    <h3 class="font-bold font-serif">Donuts</h3>
+                    <p class="text-xs opacity-60">Glazed, Chocolate Fill</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center">
+                    <div class="text-3xl mb-3">🥐</div>
+                    <h3 class="font-bold font-serif">Pastries</h3>
+                    <p class="text-xs opacity-60">Daily Specials</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cream-puff text-warm-cocoa py-12 border-t border-warm-cocoa/10">
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
+            <div>
+                <a href="index.html" class="flex items-center gap-2 mb-4">
+                    <img src="images/logo.png" alt="Sweet N Sugary Logo"
+                        class="h-12 w-auto rounded-full border border-warm-cocoa/10">
+                    <div class="text-xl font-serif font-bold tracking-wide">Sweet N Sugary</div>
+                </a>
+                <p class="text-sm opacity-80 leading-relaxed">
+                    Custom Cakes & Desserts in Jamnagar.<br>
+                    Crafting edible memories. Made with Love.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6">Quick Links</h4>
+                <div class="flex flex-col space-y-3 text-sm opacity-80">
+                    <a href="index.html" class="hover:text-dusty-rose">Home</a>
+                    <a href="menu.html" class="hover:text-dusty-rose">Menu</a>
+                    <a href="contact.html" class="hover:text-dusty-rose">Contact</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6">Contact</h4>
+                <p class="text-sm opacity-80 leading-relaxed mb-4">
+                    Jamnagar, Gujarat<br>
+                    <a href="tel:+919726805395" class="hover:text-dusty-rose font-bold">Call: +91 97268 05395</a><br>
+                    <a href="mailto:hello@sweetnsugary.com" class="hover:text-dusty-rose">hello@sweetnsugary.com</a>
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/sweet__n__sugary__/" target="_blank"
+                        class="text-warm-cocoa hover:text-dusty-rose transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Flavor Guide Modal -->
+    <dialog id="flavor-guide" class="p-0 rounded-2xl shadow-2xl backdrop:bg-warm-cocoa/50 w-full max-w-2xl">
+        <div class="bg-cream-puff p-8 relative">
+            <button onclick="document.getElementById('flavor-guide').close()"
+                class="absolute top-4 right-4 text-warm-cocoa hover:text-dusty-rose">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 class="text-3xl font-serif font-bold mb-6 text-center text-warm-cocoa">Flavor Guide</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="font-bold text-dusty-rose mb-2 uppercase tracking-wide text-xs">Classics</h3>
+                    <p class="text-sm">Vanilla Bean, Double Chocolate, Red Velvet, Pineapple</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dusty-rose mb-2 uppercase tracking-wide text-xs">Premium</h3>
+                    <p class="text-sm">Biscoff, Nutella Hazelnut, Rasmalai, Blueberry Cheesecake</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dusty-rose mb-2 uppercase tracking-wide text-xs">Frostings</h3>
+                    <p class="text-sm">Swiss Meringue Buttercream, Chocolate Ganache, Whipped Cream</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg mt-6">
+                    <p class="text-xs text-center italic opacity-70">* All cakes are available in Eggless options.
+                        Custom flavors available on request.</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <button onclick="document.getElementById('flavor-guide').close()"
+                    class="px-6 py-2 bg-warm-cocoa text-cream-puff rounded-full font-bold text-sm">Close</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('open')) {
+                mobileMenu.classList.remove('open');
+                menuBtn.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>`;
+            } else {
+                mobileMenu.classList.add('open');
+                menuBtn.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>`;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

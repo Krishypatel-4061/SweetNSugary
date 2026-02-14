@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet N Sugary | Jamnagar's Premium Home Bakery</title>
+    <meta name="description"
+        content="Custom Cakes & Desserts in Jamnagar 🍰 Made with Love & Finest Ingredients. Order now for your special occasion. Call 9726805395.">
+    <meta name="keywords"
+        content="Sweet N Sugary, Jamnagar Bakery, Custom Cakes Jamnagar, Eggless Cakes Jamnagar, Home Bakery Gujarat, Wedding Cakes Jamnagar">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream-puff': '#F9F5F0',
+                        'warm-cocoa': '#5D4037',
+                        'dusty-rose': '#D4A59A',
+                        'sage-green': '#8FBC8F',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.6s;
+        }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+        }
+
+        #mobile-menu.open {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-cream-puff text-warm-cocoa font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav
+        class="flex justify-between items-center py-4 px-6 md:px-16 absolute w-full z-30 bg-white/90 backdrop-blur-md md:bg-transparent shadow-sm md:shadow-none">
+
+        <!-- Logo Area -->
+        <a href="index.html" class="flex items-center gap-2">
+            <img src="images/logo.png" alt="Sweet N Sugary Logo"
+                class="h-16 w-auto rounded-full border-2 border-warm-cocoa/10">
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-widest uppercase items-center">
+            <a href="index.html" class="hover:text-dusty-rose transition text-dusty-rose">Home</a>
+            <a href="menu.html" class="hover:text-dusty-rose transition">Menu</a>
+            <!-- <a href="#" class="hover:text-dusty-rose transition">About</a> -->
+            <a href="contact.html"
+                class="px-6 py-2 border border-warm-cocoa rounded-full hover:bg-warm-cocoa hover:text-cream-puff transition">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-warm-cocoa focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-cream-puff z-20 pt-24 px-6 md:hidden">
+        <div class="flex flex-col space-y-6 text-center text-xl font-serif font-bold text-warm-cocoa">
+            <a href="index.html" class="hover:text-dusty-rose">Home</a>
+            <a href="menu.html" class="hover:text-dusty-rose">Menu</a>
+            <!-- <a href="#" class="hover:text-dusty-rose">About</a> -->
+            <a href="contact.html" class="hover:text-dusty-rose">Contact Us</a>
+            <div class="pt-8 border-t border-warm-cocoa/10">
+                <a href="https://wa.me/919726805395"
+                    class="block w-full bg-warm-cocoa text-cream-puff py-3 rounded-full text-base font-sans">Order on
+                    WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-0">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-dusty-rose opacity-20 rounded-full blur-3xl">
+        </div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-orange-100 opacity-30 rounded-full blur-3xl">
+        </div>
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="text-center md:text-left order-2 md:order-1">
+                <span
+                    class="fade-in-up inline-block py-1 px-3 border border-warm-cocoa/30 rounded-full text-xs font-bold tracking-widest mb-4 uppercase">
+                    📍 Jamnagar, Gujarat
+                </span>
+                <h1
+                    class="fade-in-up delay-100 text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6">
+                    Custom Cakes & <br>
+                    <span class="text-dusty-rose italic">Desserts 🍰</span>
+                </h1>
+                <p class="fade-in-up delay-200 text-lg md:text-xl text-warm-cocoa/80 mb-8 max-w-lg mx-auto md:mx-0">
+                    Made with Love & Finest Ingredients. ✨ Order now for your special occasion.
+                </p>
+                <div class="fade-in-up delay-200 flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+                    <a href="menu.html"
+                        class="bg-warm-cocoa text-cream-puff px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-opacity-90 transition transform hover:-translate-y-1 block text-center">
+                        View Menu
+                    </a>
+                    <a href="https://www.instagram.com/sweet__n__sugary__/" target="_blank"
+                        class="flex items-center justify-center gap-2 px-8 py-4 border border-warm-cocoa rounded-full font-bold hover:bg-warm-cocoa/5 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                        Follow Us
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative fade-in-up delay-200 order-1 md:order-2">
+                <div
+                    class="relative w-full aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl">
+                    <!-- Hero Cake Image -->
+                    <img src="https://www.lifeloveandsugar.com/wp-content/uploads/2014/08/Best-Moist-Chocolate-Cake1-1.jpg"
+                        alt="Delicious Cake" class="object-cover w-full h-full hover:scale-110 transition duration-700">
+                </div>
+                <div
+                    class="absolute bottom-10 -left-6 bg-cream-puff p-4 rounded-xl shadow-xl border border-warm-cocoa/10 animate-bounce hidden md:block">
+                    <p class="text-xs font-bold text-warm-cocoa uppercase tracking-wide">Customer Favorite</p>
+                    <p class="text-dusty-rose font-serif font-bold text-lg">Double Chocolate Truffle</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-16 text-warm-cocoa">Why Choose Sweet N
+                Sugary?</h2>
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-2xl bg-cream-puff hover:shadow-lg transition">
+                    <div
+                        class="w-16 h-16 mx-auto bg-dusty-rose text-white rounded-full flex items-center justify-center mb-6 text-2xl">
+                        🌿</div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Fresh & Preservative-Free</h3>
+                    <p class="text-warm-cocoa/80 italic">No stale shelves. We bake to order, ensuring every bite is
+                        fresh, aromatic goodness.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl bg-cream-puff hover:shadow-lg transition">
+                    <div
+                        class="w-16 h-16 mx-auto bg-dusty-rose text-white rounded-full flex items-center justify-center mb-6 text-2xl">
+                        🎨</div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Made with Love</h3>
+                    <p class="text-warm-cocoa/80 italic">From elegant fondant to trending bento cakes, tailored to your
+                        personality with the finest ingredients.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl bg-cream-puff hover:shadow-lg transition">
+                    <div
+                        class="w-16 h-16 mx-auto bg-dusty-rose text-white rounded-full flex items-center justify-center mb-6 text-2xl">
+                        ✨</div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Premium Ingredients</h3>
+                    <p class="text-warm-cocoa/80 italic">We refuse to compromise on quality. Only the finest ingredients
+                        for our Jamnagar family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-cream-puff">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                    alt="Baker mixing ingredients" class="rounded-2xl shadow-xl">
+            </div>
+            <div>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 text-warm-cocoa">The Story of 'Sweet N Sugary'
+                </h2>
+                <h3 class="text-xl font-serif text-dusty-rose mb-6">Passion, Precision, and Premium Ingredients</h3>
+                <p class="text-lg text-warm-cocoa/80 mb-6 leading-relaxed">
+                    Located in the heart of Jamnagar, Gujarat, we are more than just a bakery; we are a home-based
+                    studio dedicated to turning your celebrations into edible memories.
+                    Unlike commercial outlets, we believe in the magic of "slow baking."
+                </p>
+                <p class="text-lg text-warm-cocoa/80 mb-8 leading-relaxed">
+                    Planning a party in Patel Colony or an event near Lakhota Lake? We are the local choice for event
+                    planners and families who refuse to compromise on quality.
+                </p>
+                <a href="contact.html"
+                    class="inline-block border-b-2 border-warm-cocoa pb-1 hover:text-dusty-rose hover:border-dusty-rose transition font-bold uppercase tracking-widest text-sm">Meet
+                    the Baker</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-dusty-rose opacity-10 rounded-full blur-3xl -ml-20 -mt-20"></div>
+        <div class="container mx-auto px-6 text-center">
+            <span class="text-dusty-rose font-bold tracking-widest uppercase text-sm mb-2 block">Kind Words</span>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-16 text-warm-cocoa">Jamnagar Loves Us</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-cream-puff p-8 rounded-xl relative">
+                    <div class="text-dusty-rose text-4xl font-serif absolute top-4 left-6">“</div>
+                    <p class="text-warm-cocoa/80 italic mb-6 pt-6">"The best birthday cake we've ever had! The design
+                        was exactly what I wanted, and the taste was divine. Highly recommend!"</p>
+                    <p class="font-bold text-warm-cocoa">— Anjali P., Patel Colony</p>
+                </div>
+                <div class="bg-cream-puff p-8 rounded-xl relative">
+                    <div class="text-dusty-rose text-4xl font-serif absolute top-4 left-6">“</div>
+                    <p class="text-warm-cocoa/80 italic mb-6 pt-6">"Finally, a place in Jamnagar that serves authentic,
+                        eggless cookies. Perfect for my evening chai."</p>
+                    <p class="font-bold text-warm-cocoa">— Rahul M., Valsura Road</p>
+                </div>
+                <div class="bg-cream-puff p-8 rounded-xl relative">
+                    <div class="text-dusty-rose text-4xl font-serif absolute top-4 left-6">“</div>
+                    <p class="text-warm-cocoa/80 italic mb-6 pt-6">"Ordered hamper jars for Diwali gifting. The
+                        packaging was so premium and everyone loved the treats!"</p>
+                    <p class="font-bold text-warm-cocoa">— Priya S., Digjam Circle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Instagram Placeholder -->
+    <section class="py-20 bg-warm-cocoa text-cream-puff text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Join our Sweet Community</h2>
+            <p class="text-xl mb-8 opacity-90">Follow our baking journey on Instagram <a
+                    href="https://www.instagram.com/sweet__n__sugary__/" target="_blank"
+                    class="underline decoration-dusty-rose hover:text-dusty-rose transition">@sweet__n__sugary__</a></p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto opacity-60">
+                <!-- Placeholders for IG Feed - Updated with reliable Cake Images -->
+                <div class="aspect-square bg-white/10 rounded-lg overflow-hidden"><img
+                        src="https://www.marcellinaincucina.com/wp-content/uploads/2023/08/italian-butter-cookies-hero.jpg"
+                        alt="Cake 1" class="w-full h-full object-cover"></div>
+                <div class="aspect-square bg-white/10 rounded-lg overflow-hidden"><img
+                        src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Cake 2" class="w-full h-full object-cover"></div>
+                <div class="aspect-square bg-white/10 rounded-lg overflow-hidden"><img
+                        src="https://images.unsplash.com/photo-1586985289906-406988974504?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Cake 3" class="w-full h-full object-cover"></div>
+                <div class="aspect-square bg-white/10 rounded-lg overflow-hidden"><img
+                        src="https://i.ytimg.com/vi/XAFnIPbaxQw/maxresdefault.jpg" alt="Cake 4"
+                        class="w-full h-full object-cover"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cream-puff text-warm-cocoa py-12 border-t border-warm-cocoa/10">
+        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
+            <div>
+                <a href="index.html" class="flex items-center gap-2 mb-4">
+                    <img src="images/logo.png" alt="Sweet N Sugary Logo"
+                        class="h-12 w-auto rounded-full border border-warm-cocoa/10">
+                    <div class="text-xl font-serif font-bold tracking-wide">Sweet N Sugary</div>
+                </a>
+                <p class="text-sm opacity-80 leading-relaxed">
+                    Custom Cakes & Desserts in Jamnagar.<br>
+                    Crafting edible memories. Made with Love.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6">Quick Links</h4>
+                <div class="flex flex-col space-y-3 text-sm opacity-80">
+                    <a href="index.html" class="hover:text-dusty-rose">Home</a>
+                    <a href="menu.html" class="hover:text-dusty-rose">Menu</a>
+                    <a href="contact.html" class="hover:text-dusty-rose">Contact</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6">Contact</h4>
+                <p class="text-sm opacity-80 leading-relaxed mb-4">
+                    Jamnagar, Gujarat<br>
+                    <a href="tel:+919726805395" class="hover:text-dusty-rose font-bold">Call: +91 97268 05395</a><br>
+                    <a href="mailto:hello@sweetnsugary.com" class="hover:text-dusty-rose">hello@sweetnsugary.com</a>
+                </p>
+                <!-- Socials -->
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/sweet__n__sugary__/" target="_blank"
+                        class="text-warm-cocoa hover:text-dusty-rose transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-xs opacity-50 mt-12">
+            &copy; 2024 Sweet N Sugary. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('open')) {
+                mobileMenu.classList.remove('open');
+                menuBtn.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>`;
+            } else {
+                mobileMenu.classList.add('open');
+                menuBtn.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
