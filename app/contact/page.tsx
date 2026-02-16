@@ -103,7 +103,6 @@ export default function ContactPage() {
                 {/* Netlify Form Handling */}
                 <form
                     className="space-y-6"
-                    data-netlify="true"
                     name="contact"
                     method="POST"
                     action="/success"

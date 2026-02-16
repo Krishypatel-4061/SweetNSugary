@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify Forms</title>
+</head>
+
+<body>
+    <!-- 
+      This form is hidden and only used for Netlify detection.
+      It mirrors the structure of the JSX form in app/contact/page.tsx.
+    -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="tel" name="phone" />
+        <input type="date" name="date" />
+        <select name="weight">
+            <option>0.5 Kg</option>
+            <option>1 Kg</option>
+            <option>2 Kg</option>
+            <option>3+ Kg</option>
+        </select>
+        <textarea name="message"></textarea>
+    </form>
+</body>
+
+</html>
