@@ -221,26 +221,10 @@ export default function CakeBuilder() {
                 <div className="grid grid-cols-2 gap-2">
                     <label className="cursor-pointer bg-purple-50 border border-purple-200 p-3 rounded-lg text-center hover:bg-purple-100 transition group">
                         <span className="text-purple-700 text-xs font-bold block mb-1">AI Match 🪄</span>
-                        <span className="text-purple-700 text-xs font-bold block mb-1">AI Match 🪄</span>
-                        {/* Use isAnalyzing properly */}
-                        {/* We need to use the state we defined. Assuming we kept it. */}
-                        {/* If we removed it in previous step, we can't use it here. */}
-                        {/* Let's assume we want to KEEP it and USE it. */}
-                        {/* I will revert the previous step if I can, or just use it if I kept it. */}
-                        {/* Wait, I can't revert easily. I'll just rewrite the state usage in the component to be consistent. */}
-                        {/* Actually, let's just comment it out in logic if I removed it. */}
-                        {/* BETTER: Keep the state, and use it here. */}
-                        <span className={`text-[10px] text-purple-600 ${true ? 'group-hover:block hidden' : ''}`}>
-                            {/* We can't access isAnalyzing if I commented it out. */}
-                            {/* Let's just fix the previous replace to NOT comment it out, but use it. */}
-                            {/* Since I can't backtrack, I will use a multi-step fix. */}
-                            {/* Step 1: Remove the state definition if it's unused. */}
-                            {/* Step 2: Remove usage in handleImageUpload. */}
-                            {/* Use multi_replace for CakeBuilder to do it cleanly. */}
-                            Loading...
+                        <span className="text-[10px] text-purple-600 block">
+                            {isAnalyzing ? 'Analyzing...' : 'Upload ref photo'}
                         </span>
-                        <span className="text-[10px] text-purple-600 group-hover:hidden">Upload ref photo</span>
-                        <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
+                        <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} disabled={isAnalyzing} />
                     </label>
                     <label className="cursor-pointer bg-blue-50 border border-blue-200 p-3 rounded-lg text-center hover:bg-blue-100 transition">
                         <span className="text-blue-700 text-xs font-bold block mb-1">Photo Print 🖨️</span>
