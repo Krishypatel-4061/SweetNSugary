@@ -39,8 +39,8 @@ export async function createProduct(formData: FormData) {
              VALUES ($1, $2, $3, $4, $5, $6)`,
             [name, slug, description, price, category, image_url]
         );
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: error instanceof Error ? error.message : "Unknown error" };
     } finally {
         client.release();
     }

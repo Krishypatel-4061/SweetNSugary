@@ -1,5 +1,6 @@
 import pool from "@/lib/db";
-import { revalidatePath } from "next/cache";
+import { revalidatePath } from "next/cache"; // Keeping it if we need it later, or just remove if truly unused. 
+// Actually, let's check correct usage. If actions use it, page might not need it.
 import { createProduct, deleteProduct } from "./actions";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
@@ -23,7 +24,10 @@ export default async function AdminProductsPage() {
                 {/* Add Product Form */}
                 <div className="bg-white p-6 rounded-xl shadow-md">
                     <h2 className="text-2xl font-bold text-gray-800 mb-6">Add New Product</h2>
-                    <form action={createProduct} className="space-y-4">
+                    <form action={async (formData) => {
+                        "use server";
+                        await createProduct(formData);
+                    }} className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Product Name</label>
                             <input name="name" required className="w-full p-2 border rounded" placeholder="e.g. Red Velvet Deluxe" />
@@ -66,7 +70,7 @@ export default async function AdminProductsPage() {
                 <div className="bg-white p-6 rounded-xl shadow-md">
                     <h2 className="text-2xl font-bold text-gray-800 mb-6">Existing Products ({products.length})</h2>
                     <div className="space-y-4 max-h-[600px] overflow-y-auto">
-                        {products.map((product: any) => (
+                        {products.map((product) => (
                             <div key={product.id} className="flex justify-between items-center p-4 border rounded-lg hover:bg-gray-50">
                                 <div className="flex gap-4 items-center">
                                     {product.image_url && <img src={product.image_url} alt={product.name} className="w-12 h-12 object-cover rounded" />}
