@@ -9,7 +9,7 @@ type Order = {
     status: string;
     delivery_date: string; // or Date
     total_amount: number; // Assuming this exists
-    items: any; // JSON or text
+    items: string; // JSON or text
     created_at: string;
 };
 
@@ -50,8 +50,8 @@ export default function AdminOrdersClient({ orders }: { orders: Order[] }) {
                                     <td className="p-4">
                                         <span
                                             className={`inline-block px-3 py-1 rounded-full text-xs font-bold ${order.status === "Completed"
-                                                    ? "bg-sage-green/20 text-sage-green"
-                                                    : "bg-yellow-100 text-yellow-800"
+                                                ? "bg-sage-green/20 text-sage-green"
+                                                : "bg-yellow-100 text-yellow-800"
                                                 }`}
                                         >
                                             {order.status}

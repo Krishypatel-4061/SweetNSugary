@@ -112,11 +112,20 @@ async function getProducts() {
     }
 }
 
+type Product = {
+    id: number | string;
+    name: string;
+    price: string;
+    image_url: string;
+    description: string;
+    category: string;
+};
+
 export default async function MenuPage() {
     const products = await getProducts();
 
     // Group products by category
-    const groupedProducts = products.reduce((acc: any, product: any) => {
+    const groupedProducts = products.reduce((acc: Record<string, Product[]>, product: Product) => {
         const category = product.category || "Other";
         if (!acc[category]) {
             acc[category] = [];
