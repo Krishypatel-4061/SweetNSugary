@@ -1,6 +1,7 @@
 import pool from "@/lib/db";
-import { revalidatePath } from "next/cache"; // Keeping it if we need it later, or just remove if truly unused. 
+// import { revalidatePath } from "next/cache"; // Keeping it if we need it later, or just remove if truly unused. 
 // Actually, let's check correct usage. If actions use it, page might not need it.
+// Removed unused import to fix lint error
 import { createProduct, deleteProduct } from "./actions";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";

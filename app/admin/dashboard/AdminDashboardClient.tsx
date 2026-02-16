@@ -105,7 +105,7 @@ export default function AdminDashboardClient({ chartData, orders, ingredient, st
                     <p className="text-gray-500">No recent orders found.</p>
                 ) : (
                     // Cast orders to match Kanban expectations (add mock status if missing)
-                    <OrderKanban initialOrders={orders.map(o => ({ ...o, status: (o.status as any) || 'pending', customer_name: o.customer_name || 'Guest', items: o.items || [], total_price: o.total_price || 0 }))} />
+                    <OrderKanban initialOrders={orders.map(o => ({ ...o, status: (o.status as "pending" | "baking" | "ready" | "completed") || 'pending', customer_name: o.customer_name || 'Guest', items: o.items || [], total_price: o.total_price || 0 }))} />
                 )}
             </div>
         </div>
