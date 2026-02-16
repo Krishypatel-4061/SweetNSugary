@@ -6,6 +6,7 @@ export async function saveCakeDesign(design: {
     baseFlavor: string;
     toppings: string[];
     color: string;
+    scale?: number;
 }) {
     try {
         const client = await pool.connect();
@@ -23,7 +24,8 @@ export async function saveCakeDesign(design: {
         // User said: "base_flavor, toppings". I'll store color as base_flavor for now or combine them.
         // Let's assume there's no color column explicitly mentioned, so mapped to flavor.
 
-        const values = [design.baseFlavor, design.toppings.join(", ")];
+        const designDetails = `Scale: ${design.scale || 1}, Color: ${design.color}, Toppings: ${design.toppings.join(", ")}`;
+        const values = [design.baseFlavor, designDetails];
 
         await client.query(query, values);
         client.release();

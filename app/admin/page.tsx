@@ -47,8 +47,13 @@ export default async function AdminPage() {
                 <h1 className="text-4xl font-serif font-bold text-warm-cocoa">
                     Admin Dashboard
                 </h1>
-                <div className="bg-white px-4 py-2 rounded-lg shadow-sm text-sm text-gray-500">
-                    Orders: <span className="font-bold text-warm-cocoa">{orders.length}</span>
+                <div className="flex gap-4">
+                    <a href="/admin/dashboard" className="bg-dusty-rose text-white px-4 py-2 rounded-lg shadow-sm text-sm font-bold hover:bg-[#a05a5a] transition">
+                        View Analytics 📊
+                    </a>
+                    <div className="bg-white px-4 py-2 rounded-lg shadow-sm text-sm text-gray-500">
+                        Orders: <span className="font-bold text-warm-cocoa">{orders.length}</span>
+                    </div>
                 </div>
             </div>
 
