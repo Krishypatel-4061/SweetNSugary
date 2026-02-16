@@ -26,7 +26,12 @@ export default function Navbar() {
                     <Link href="/menu" className="hover:text-dusty-rose transition">
                         Menu
                     </Link>
-                    {/* <Link href="#" className="hover:text-dusty-rose transition">About</Link> */}
+                    <Link href="/builder" className="hover:text-dusty-rose transition">
+                        Design Cake
+                    </Link>
+                    <Link href="/admin" className="hover:text-dusty-rose transition opacity-50 text-xs">
+                        Admin
+                    </Link>
                     <Link
                         href="/contact"
                         className="px-6 py-2 border border-warm-cocoa rounded-full hover:bg-warm-cocoa hover:text-cream-puff transition"
@@ -86,7 +91,12 @@ export default function Navbar() {
                     <Link href="/menu" className="hover:text-dusty-rose" onClick={() => setIsOpen(false)}>
                         Menu
                     </Link>
-                    {/* <Link href="#" className="hover:text-dusty-rose">About</Link> */}
+                    <Link href="/builder" className="hover:text-dusty-rose" onClick={() => setIsOpen(false)}>
+                        Design a Cake
+                    </Link>
+                    <Link href="/admin" className="hover:text-dusty-rose text-sm opacity-50" onClick={() => setIsOpen(false)}>
+                        Admin Dashboard
+                    </Link>
                     <Link href="/contact" className="hover:text-dusty-rose" onClick={() => setIsOpen(false)}>
                         Contact Us
                     </Link>

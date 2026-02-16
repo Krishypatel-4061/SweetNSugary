@@ -103,6 +103,7 @@ async function getProducts() {
         client.release();
 
         if (result.rows.length === 0) {
+            console.log("Database connected but empty. Returning fallback data.");
             return FALLBACK_PRODUCTS;
         }
         return result.rows;
