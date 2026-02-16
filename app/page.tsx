@@ -1,28 +1,38 @@
 import Link from "next/link";
-// import Image from "next/image"; // Using img tags for now to preserve aspect ratios easily from original
+import Image from "next/image";
+import MicroInteraction from "@/components/MicroInteraction";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden">
       {/* Hero Section */}
-      <header className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 md:pt-0">
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-dusty-rose opacity-20 rounded-full blur-3xl"></div>
+      <header className="relative min-h-screen flex items-center justify-center pt-28 md:pt-0">
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-dusty-rose opacity-20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-orange-100 opacity-30 rounded-full blur-3xl"></div>
 
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="text-center md:text-left order-2 md:order-1">
-            <span className="fade-in-up inline-block py-1 px-3 border border-warm-cocoa/30 rounded-full text-xs font-bold tracking-widest mb-4 uppercase">
-              📍 Jamnagar, Gujarat
-            </span>
-            <h1 className="fade-in-up delay-100 text-4xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6">
-              Custom Cakes & <br />
-              <span className="text-dusty-rose italic">Desserts 🍰</span>
-            </h1>
-            <p className="fade-in-up delay-200 text-lg md:text-xl text-warm-cocoa/80 mb-8 max-w-lg mx-auto md:mx-0">
-              Made with Love & Finest Ingredients. ✨ Order now for your special
-              occasion.
-            </p>
-            <div className="fade-in-up delay-200 flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+            <MicroInteraction>
+              <span className="inline-block py-1 px-3 border border-warm-cocoa/30 rounded-full text-xs font-bold tracking-widest mb-4 uppercase">
+                📍 Jamnagar, Gujarat
+              </span>
+            </MicroInteraction>
+
+            <MicroInteraction delay={0.1}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight mb-6 text-warm-cocoa">
+                Custom Cakes & <br />
+                <span className="text-dusty-rose italic">Desserts 🍰</span>
+              </h1>
+            </MicroInteraction>
+
+            <MicroInteraction delay={0.2}>
+              <p className="text-lg md:text-xl text-warm-cocoa/80 mb-8 max-w-lg mx-auto md:mx-0">
+                Made with Love & Finest Ingredients. ✨ Order now for your special
+                occasion.
+              </p>
+            </MicroInteraction>
+
+            <MicroInteraction delay={0.3} className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
               <Link
                 href="/menu"
                 className="bg-warm-cocoa text-cream-puff px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:bg-opacity-90 transition transform hover:-translate-y-1 block text-center"
@@ -39,76 +49,59 @@ export default function Home() {
                 </svg>
                 Follow Us
               </a>
-            </div>
+            </MicroInteraction>
           </div>
 
-          <div className="relative fade-in-up delay-200 order-1 md:order-2">
-            <div className="relative w-full aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl">
-              {/* Hero Cake Image */}
-              <img
+          <MicroInteraction type="scale" delay={0.4} className="order-1 md:order-2">
+            <div className="relative w-full aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl group cursor-pointer">
+              <Image
                 src="https://www.lifeloveandsugar.com/wp-content/uploads/2014/08/Best-Moist-Chocolate-Cake1-1.jpg"
                 alt="Delicious Cake"
-                className="object-cover w-full h-full hover:scale-110 transition duration-700"
+                fill
+                className="object-cover group-hover:scale-110 transition duration-700"
               />
+              <div className="absolute bottom-10 -left-6 bg-cream-puff p-4 rounded-xl shadow-xl border border-warm-cocoa/10 animate-bounce hidden md:block">
+                <p className="text-xs font-bold text-warm-cocoa uppercase tracking-wide">
+                  Customer Favorite
+                </p>
+                <p className="text-dusty-rose font-serif font-bold text-lg">
+                  Double Chocolate Truffle
+                </p>
+              </div>
             </div>
-            <div className="absolute bottom-10 -left-6 bg-cream-puff p-4 rounded-xl shadow-xl border border-warm-cocoa/10 animate-bounce hidden md:block">
-              <p className="text-xs font-bold text-warm-cocoa uppercase tracking-wide">
-                Customer Favorite
-              </p>
-              <p className="text-dusty-rose font-serif font-bold text-lg">
-                Double Chocolate Truffle
-              </p>
-            </div>
-          </div>
+
+          </MicroInteraction>
         </div>
       </header>
 
       {/* Features Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-16 text-warm-cocoa">
-            Why Choose Sweet N Sugary?
-          </h2>
+          <MicroInteraction>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-center mb-16 text-warm-cocoa">
+              Why Choose Sweet N Sugary?
+            </h2>
+          </MicroInteraction>
+
           <div className="grid md:grid-cols-3 gap-12 text-center">
-            {/* Feature 1 */}
-            <div className="p-8 rounded-2xl bg-cream-puff hover:shadow-lg transition">
-              <div className="w-16 h-16 mx-auto bg-dusty-rose text-white rounded-full flex items-center justify-center mb-6 text-2xl">
-                🌿
-              </div>
-              <h3 className="text-xl font-serif font-bold mb-4">
-                Fresh & Preservative-Free
-              </h3>
-              <p className="text-warm-cocoa/80 italic">
-                No stale shelves. We bake to order, ensuring every bite is fresh,
-                aromatic goodness.
-              </p>
-            </div>
-            {/* Feature 2 */}
-            <div className="p-8 rounded-2xl bg-cream-puff hover:shadow-lg transition">
-              <div className="w-16 h-16 mx-auto bg-dusty-rose text-white rounded-full flex items-center justify-center mb-6 text-2xl">
-                🎨
-              </div>
-              <h3 className="text-xl font-serif font-bold mb-4">
-                Made with Love
-              </h3>
-              <p className="text-warm-cocoa/80 italic">
-                From elegant fondant to trending bento cakes, tailored to your
-                personality with the finest ingredients.
-              </p>
-            </div>
-            {/* Feature 3 */}
-            <div className="p-8 rounded-2xl bg-cream-puff hover:shadow-lg transition">
-              <div className="w-16 h-16 mx-auto bg-dusty-rose text-white rounded-full flex items-center justify-center mb-6 text-2xl">
-                ✨
-              </div>
-              <h3 className="text-xl font-serif font-bold mb-4">
-                Premium Ingredients
-              </h3>
-              <p className="text-warm-cocoa/80 italic">
-                We refuse to compromise on quality. Only the finest ingredients
-                for our Jamnagar family.
-              </p>
-            </div>
+            {[{ icon: "🌿", title: "Fresh & Preservative-Free", desc: "No stale shelves. We bake to order, ensuring every bite is fresh, aromatic goodness." },
+            { icon: "🎨", title: "Made with Love", desc: "From elegant fondant to trending bento cakes, tailored to your personality." },
+            { icon: "✨", title: "Premium Ingredients", desc: "We refuse to compromise on quality. Only the finest ingredients for our Jamnagar family." }
+            ].map((feature, i) => (
+              <MicroInteraction key={i} delay={i * 0.2}>
+                <div className="p-8 rounded-2xl bg-cream-puff hover:shadow-lg transition hover:-translate-y-2 duration-300">
+                  <div className="w-16 h-16 mx-auto bg-dusty-rose text-white rounded-full flex items-center justify-center mb-6 text-2xl shadow-md">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-serif font-bold mb-4 text-warm-cocoa">
+                    {feature.title}
+                  </h3>
+                  <p className="text-warm-cocoa/80 italic leading-relaxed">
+                    {feature.desc}
+                  </p>
+                </div>
+              </MicroInteraction>
+            ))}
           </div>
         </div>
       </section>
@@ -116,140 +109,119 @@ export default function Home() {
       {/* About Section */}
       <section className="py-20 bg-cream-puff">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <MicroInteraction type="scale">
+            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden shadow-xl rotate-2 hover:rotate-0 transition duration-500">
+              <Image
+                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Baker mixing ingredients"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </MicroInteraction>
+
           <div>
-            <img
-              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-              alt="Baker mixing ingredients"
-              className="rounded-2xl shadow-xl"
-            />
-          </div>
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-warm-cocoa">
-              The Story of &apos;Sweet N Sugary&apos;
-            </h2>
-            <h3 className="text-xl font-serif text-dusty-rose mb-6">
-              Passion, Precision, and Premium Ingredients
-            </h3>
-            <p className="text-lg text-warm-cocoa/80 mb-6 leading-relaxed">
-              Located in the heart of Jamnagar, Gujarat, we are more than just a
-              bakery; we are a home-based studio dedicated to turning your
-              celebrations into edible memories. Unlike commercial outlets, we
-              believe in the magic of &quot;slow baking.&quot;
-            </p>
-            <p className="text-lg text-warm-cocoa/80 mb-8 leading-relaxed">
-              Planning a party in Patel Colony or an event near Lakhota Lake? We
-              are the local choice for event planners and families who refuse to
-              compromise on quality.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block border-b-2 border-warm-cocoa pb-1 hover:text-dusty-rose hover:border-dusty-rose transition font-bold uppercase tracking-widest text-sm"
-            >
-              Meet the Baker
-            </Link>
+            <MicroInteraction delay={0.2}>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-warm-cocoa">
+                The Story of &apos;Sweet N Sugary&apos;
+              </h2>
+            </MicroInteraction>
+            <MicroInteraction delay={0.3}>
+              <h3 className="text-xl font-serif text-dusty-rose mb-6">
+                Passion, Precision, and Premium Ingredients
+              </h3>
+            </MicroInteraction>
+            <MicroInteraction delay={0.4}>
+              <p className="text-lg text-warm-cocoa/80 mb-6 leading-relaxed">
+                Located in the heart of Jamnagar, Gujarat, we are more than just a
+                bakery; we are a home-based studio dedicated to turning your
+                celebrations into edible memories. Unlike commercial outlets, we
+                believe in the magic of &quot;slow baking.&quot;
+              </p>
+            </MicroInteraction>
+            <MicroInteraction delay={0.5}>
+              <Link
+                href="/contact"
+                className="inline-block border-b-2 border-warm-cocoa pb-1 hover:text-dusty-rose hover:border-dusty-rose transition font-bold uppercase tracking-widest text-sm"
+              >
+                Meet the Baker →
+              </Link>
+            </MicroInteraction>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
       <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-dusty-rose opacity-10 rounded-full blur-3xl -ml-20 -mt-20"></div>
-        <div className="container mx-auto px-6 text-center">
-          <span className="text-dusty-rose font-bold tracking-widest uppercase text-sm mb-2 block">
-            Kind Words
-          </span>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-16 text-warm-cocoa">
-            Jamnagar Loves Us
-          </h2>
+        <div className="absolute top-0 left-0 w-64 h-64 bg-dusty-rose/10 rounded-full blur-3xl -ml-20 -mt-20"></div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <MicroInteraction>
+            <span className="text-dusty-rose font-bold tracking-widest uppercase text-sm mb-2 block">
+              Kind Words
+            </span>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-16 text-warm-cocoa">
+              Jamnagar Loves Us
+            </h2>
+          </MicroInteraction>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-cream-puff p-8 rounded-xl relative">
-              <div className="text-dusty-rose text-4xl font-serif absolute top-4 left-6">
-                “
-              </div>
-              <p className="text-warm-cocoa/80 italic mb-6 pt-6">
-                &quot;The best birthday cake we&apos;ve ever had! The design was
-                exactly what I wanted, and the taste was divine. Highly
-                recommend!&quot;
-              </p>
-              <p className="font-bold text-warm-cocoa">
-                — Anjali P., Patel Colony
-              </p>
-            </div>
-            <div className="bg-cream-puff p-8 rounded-xl relative">
-              <div className="text-dusty-rose text-4xl font-serif absolute top-4 left-6">
-                “
-              </div>
-              <p className="text-warm-cocoa/80 italic mb-6 pt-6">
-                &quot;Finally, a place in Jamnagar that serves authentic, eggless
-                cookies. Perfect for my evening chai.&quot;
-              </p>
-              <p className="font-bold text-warm-cocoa">
-                — Rahul M., Valsura Road
-              </p>
-            </div>
-            <div className="bg-cream-puff p-8 rounded-xl relative">
-              <div className="text-dusty-rose text-4xl font-serif absolute top-4 left-6">
-                “
-              </div>
-              <p className="text-warm-cocoa/80 italic mb-6 pt-6">
-                &quot;Ordered hamper jars for Diwali gifting. The packaging was so
-                premium and everyone loved the treats!&quot;
-              </p>
-              <p className="font-bold text-warm-cocoa">
-                — Priya S., Digjam Circle
-              </p>
-            </div>
+            {[{ text: "The best birthday cake we've ever had! The design was exactly what I wanted.", author: "Anjali P., Patel Colony" },
+            { text: "Finally, a place in Jamnagar that serves authentic, eggless cookies. Perfect for my evening chai.", author: "Rahul M., Valsura Road" },
+            { text: "Ordered hamper jars for Diwali gifting. The packaging was so premium and everyone loved the treats!", author: "Priya S., Digjam Circle" }
+            ].map((review, i) => (
+              <MicroInteraction key={i} delay={i * 0.2}>
+                <div className="bg-cream-puff p-8 rounded-xl relative hover:bg-warm-cocoa hover:text-white transition duration-500 group text-left">
+                  <div className="text-dusty-rose text-6xl font-serif absolute -top-4 left-6 opacity-40">“</div>
+                  <p className="text-warm-cocoa/80 group-hover:text-white/90 italic mb-6 pt-6 relative z-10">
+                    &quot;{review.text}&quot;
+                  </p>
+                  <p className="font-bold text-warm-cocoa group-hover:text-white">
+                    — {review.author}
+                  </p>
+                </div>
+              </MicroInteraction>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA / Instagram Placeholder */}
+      {/* CTA Section */}
       <section className="py-20 bg-warm-cocoa text-cream-puff text-center">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
-            Join our Sweet Community
-          </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Follow our baking journey on Instagram{" "}
-            <a
-              href="https://www.instagram.com/sweet__n__sugary__/"
-              target="_blank"
-              className="underline decoration-dusty-rose hover:text-dusty-rose transition"
-            >
-              @sweet__n__sugary__
-            </a>
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto opacity-60">
-            {/* Placeholders for IG Feed - Updated with reliable Cake Images */}
-            <div className="aspect-square bg-white/10 rounded-lg overflow-hidden">
-              <img
-                src="https://www.marcellinaincucina.com/wp-content/uploads/2023/08/italian-butter-cookies-hero.jpg"
-                alt="Cake 1"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="aspect-square bg-white/10 rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Cake 2"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="aspect-square bg-white/10 rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1586985289906-406988974504?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                alt="Cake 3"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="aspect-square bg-white/10 rounded-lg overflow-hidden">
-              <img
-                src="https://i.ytimg.com/vi/XAFnIPbaxQw/maxresdefault.jpg"
-                alt="Cake 4"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <MicroInteraction>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
+              Join our Sweet Community
+            </h2>
+            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+              Follow our baking journey on Instagram{" "}
+              <a
+                href="https://www.instagram.com/sweet__n__sugary__/"
+                target="_blank"
+                className="underline decoration-dusty-rose hover:text-dusty-rose transition font-bold"
+              >
+                @sweet__n__sugary__
+              </a>
+            </p>
+          </MicroInteraction>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto opacity-70 hover:opacity-100 transition duration-500">
+            {[
+              "https://www.marcellinaincucina.com/wp-content/uploads/2023/08/italian-butter-cookies-hero.jpg",
+              "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              "https://images.unsplash.com/photo-1586985289906-406988974504?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              "https://i.ytimg.com/vi/XAFnIPbaxQw/maxresdefault.jpg"
+            ].map((src, i) => (
+              <MicroInteraction key={i} delay={i * 0.1} type="scale">
+                <div className="relative aspect-square bg-white/10 rounded-lg overflow-hidden">
+                  <Image
+                    src={src}
+                    alt={`Gallery ${i + 1}`}
+                    fill
+                    className="object-cover hover:scale-110 transition duration-700"
+                  />
+                </div>
+              </MicroInteraction>
+            ))}
           </div>
         </div>
       </section>

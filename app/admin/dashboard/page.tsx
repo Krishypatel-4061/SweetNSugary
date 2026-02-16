@@ -19,10 +19,11 @@ async function getInventoryData() {
         // Fetch last 30 days of data for Flour as an example (or aggregate all)
         // For simplicity, let's just fetch Flour to show the concept
         const result = await client.query(`
-      SELECT date, usage_amount 
-      FROM inventory_logs 
-      WHERE ingredient_name = 'Flour' 
-      ORDER BY date ASC 
+      SELECT il.log_date as date, ABS(il.change_amount) as usage_amount 
+      FROM inventory_logs il
+      JOIN ingredients i ON il.ingredient_id = i.id
+      WHERE i.name = 'Flour' AND il.change_amount < 0
+      ORDER BY il.log_date ASC 
       LIMIT 60
     `);
         return result.rows;
@@ -48,11 +49,15 @@ async function getRecentOrders() {
     }
 }
 
-// Simple Moving Average Forecasting
+// Weighted Moving Average Forecasting
 function calculateForecast(data: InventoryLog[]) {
     if (data.length < 7) return [];
 
     const forecast: InventoryLog[] = [];
+    // Weights for 7 days (giving more weight to recent days)
+    // Sum of weights should roughly be 1, or we divide by sum.
+    // 0.05, 0.05, 0.1, 0.1, 0.2, 0.2, 0.3 -> Sum = 1.0
+    const weights = [0.05, 0.05, 0.1, 0.1, 0.2, 0.2, 0.3];
     const windowSize = 7;
 
     // Last known date
@@ -62,21 +67,52 @@ function calculateForecast(data: InventoryLog[]) {
     for (let i = 0; i < 7; i++) {
         // Get last 7 entries (real or predicted)
         const relevantData = [...data, ...forecast].slice(-(windowSize));
-        const avg = relevantData.reduce((sum, item) => sum + Number(item.usage_amount), 0) / relevantData.length;
+
+        // Apply WMA
+        const weightedSum = relevantData.reduce((sum, item, idx) => {
+            return sum + (Number(item.usage_amount) * weights[idx]);
+        }, 0);
 
         lastDate = addDays(lastDate, 1);
         forecast.push({
             date: lastDate.toISOString().split('T')[0],
-            usage_amount: avg.toFixed(2),
+            usage_amount: weightedSum.toFixed(2),
             isForecast: true
         });
     }
     return forecast;
 }
 
+async function getFinancialStats() {
+    const client = await pool.connect();
+    try {
+        // Aggregate total revenue from orders
+        // Note: In a real app, 'total_amount' should be summed. 
+        // We'll assume 'orders' table has 'total_amount'.
+        const revenueRes = await client.query(`
+            SELECT SUM(total_amount) as total_revenue, COUNT(*) as total_orders 
+            FROM orders
+        `);
+
+        // Best sellers (mock logic if no order_items table, but if items is JSONB or array we can try)
+        // For now, let's mock best sellers or fetch from products if we had sales data.
+        // We'll just return basic revenue stats.
+        return {
+            totalRevenue: revenueRes.rows[0]?.total_revenue || 0,
+            totalOrders: revenueRes.rows[0]?.total_orders || 0,
+            averageOrderValue: (revenueRes.rows[0]?.total_revenue / revenueRes.rows[0]?.total_orders) || 0
+        };
+    } catch {
+        return { totalRevenue: 0, totalOrders: 0, averageOrderValue: 0 };
+    } finally {
+        client.release();
+    }
+}
+
 export default async function AdminDashboard() {
     const rawData = await getInventoryData();
     const orders = await getRecentOrders();
+    const stats = await getFinancialStats();
 
     // Prepare chart data: usage + forecast
     // Mark historical data
@@ -99,7 +135,8 @@ export default async function AdminDashboard() {
         <AdminDashboardClient
             chartData={chartData}
             orders={orders}
-            ingredient="Flour" // Hardcoded for this demo 
+            ingredient="Flour" // Hardcoded for this demo
+            stats={stats}
         />
     );
 }

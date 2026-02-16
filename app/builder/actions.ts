@@ -7,25 +7,29 @@ export async function saveCakeDesign(design: {
     toppings: string[];
     color: string;
     scale?: number;
+    price?: number;
 }) {
     try {
         const client = await pool.connect();
-        // Assuming table 'custom_cake_builds' has columns: base_flavor, toppings (text/json), color
-        // If not, we might need to adjust. The user prompt said: "custom_cake_builds (id, base_flavor, toppings, etc.)"
-        // I'll assume toppings is stored as a comma-separated string or JSON. I'll use text for simplicity.
 
         const query = `
-      INSERT INTO custom_cake_builds (base_flavor, toppings, created_at)
-      VALUES ($1, $2, NOW())
+      INSERT INTO custom_cake_builds (base_flavor, toppings, estimated_price, created_at)
+      VALUES ($1, $2, $3, NOW())
       RETURNING id
     `;
 
-        // Storing color in base_flavor or a separate column? 
-        // User said: "base_flavor, toppings". I'll store color as base_flavor for now or combine them.
-        // Let's assume there's no color column explicitly mentioned, so mapped to flavor.
+        // Store details in JSON if needed, but for now map key fields
+        // We'll store complex details in toppings JSONB if we change schema, 
+        // but current schema has 'toppings' as JSONB. 
+        // The previous code coerced it to string list in 'values' array? 
+        // Wait, migrate-schema says "toppings JSONB". 
+        // But the previous code in actions.ts did: `const designDetails = ...; values = [design.baseFlavor, designDetails]`
+        // which implies it was inserting a string into 'toppings' column? 
+        // If 'toppings' is JSONB, inserting a string might work if it's a valid JSON string, or fail.
+        // Let's fix this to be proper JSON.
 
-        const designDetails = `Scale: ${design.scale || 1}, Color: ${design.color}, Toppings: ${design.toppings.join(", ")}`;
-        const values = [design.baseFlavor, designDetails];
+        const toppingsJson = JSON.stringify(design.toppings);
+        const values = [design.baseFlavor, toppingsJson, design.price || 0];
 
         await client.query(query, values);
         client.release();

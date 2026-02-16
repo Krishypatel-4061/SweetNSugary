@@ -25,15 +25,21 @@ export async function POST(req: Request) {
         The JSON keys must be:
         - baseFlavor: "Vanilla" | "Chocolate" | "Red Velvet" | "Strawberry" | "Pistachio" (choose closest visual match)
         - color: Hex code string for the base frosting color.
-        - toppings: Array of strings. Options: "Cherry", "Blueberry", "Sprinkles". (Include if visible).
+        - toppings: Array of strings. Options: "Cherry", "Blueberry", "Sprinkles", "Golden Pearl". (Include if visible).
         - scale: number between 0.8 and 1.5 (estimate cake size/height).
+        - tiers: number (1, 2, or 3).
+        - shape: "Round" | "Square" | "Heart" (default Round).
+        - estimatedWeight: string (e.g. "1.5 kg").
         
         Example:
         {
           "baseFlavor": "Chocolate",
           "color": "#5D4037",
           "toppings": ["Sprinkles", "Cherry"],
-          "scale": 1.2
+          "scale": 1.2,
+          "tiers": 2,
+          "shape": "Round",
+          "estimatedWeight": "2 kg"
         }
         `;
 

@@ -48,6 +48,9 @@ export default async function AdminPage() {
                     Admin Dashboard
                 </h1>
                 <div className="flex gap-4">
+                    <a href="/admin/products" className="bg-warm-cocoa text-white px-4 py-2 rounded-lg shadow-sm text-sm font-bold hover:bg-opacity-90 transition mr-2">
+                        Manage Products 🍰
+                    </a>
                     <a href="/admin/dashboard" className="bg-dusty-rose text-white px-4 py-2 rounded-lg shadow-sm text-sm font-bold hover:bg-[#a05a5a] transition">
                         View Analytics 📊
                     </a>

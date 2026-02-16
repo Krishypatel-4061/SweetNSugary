@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 type Product = {
     id: number | string;
@@ -32,17 +33,18 @@ export default function MenuClient({ groupedProducts }: MenuClientProps) {
                         <div
                             key={product.id}
                             className={`group fade-in ${index % 3 === 0
-                                    ? "delay-100"
-                                    : index % 3 === 1
-                                        ? "delay-200"
-                                        : "delay-300"
+                                ? "delay-100"
+                                : index % 3 === 1
+                                    ? "delay-200"
+                                    : "delay-300"
                                 }`}
                         >
-                            <div className="overflow-hidden rounded-xl aspect-[4/5] mb-4">
-                                <img
+                            <div className="relative overflow-hidden rounded-xl aspect-[4/5] mb-4">
+                                <Image
                                     src={product.image_url}
                                     alt={product.name}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition duration-500"
                                 />
                             </div>
                             <div className="flex justify-between items-start text-warm-cocoa">

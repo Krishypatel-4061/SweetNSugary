@@ -20,6 +20,26 @@ const lato = Lato({
 export const metadata: Metadata = {
   title: "Sweet N Sugary | Jamnagar's Premium Home Bakery",
   description: "Custom Cakes & Desserts in Jamnagar 🍰 Made with Love & Finest Ingredients.",
+  openGraph: {
+    title: "Sweet N Sugary | Jamnagar's Premium Home Bakery",
+    description: "Order custom 3D cakes, brownies, and treats online. Jamnagar's favorite home bakery.",
+    url: 'https://sweetnsugary.in',
+    siteName: 'Sweet N Sugary',
+    images: [
+      {
+        url: '/images/gallery_1.jpg', // Using one of the existing gallery images
+        width: 800,
+        height: 600,
+        alt: 'Sweet N Sugary Cake',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
