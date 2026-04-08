@@ -1,11 +1,6 @@
-import { Pool } from "pg";
+import pool from "@/lib/db";
 import { format, addDays } from "date-fns";
 import AdminDashboardClient from "./AdminDashboardClient";
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-});
 
 interface InventoryLog {
     date: string | Date;

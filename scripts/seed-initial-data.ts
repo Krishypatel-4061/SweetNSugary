@@ -29,8 +29,7 @@ async function seed() {
         // Wait, user needs "login for admin". So I need a user.
         // I will insert a user with a placeholder password that my future Login API will recognize/replace.
 
-        // Deleting existing users to avoid conflicts
-        await client.query("DELETE FROM users");
+        // Deleting existing products to avoid conflicts
         await client.query("DELETE FROM products");
         await client.query("DELETE FROM ingredients");
 

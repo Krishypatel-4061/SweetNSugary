@@ -23,8 +23,8 @@ export async function POST(req: Request) {
         Return ONLY valid JSON, no markdown formatting.
         
         The JSON keys must be:
-        - baseFlavor: "Vanilla" | "Chocolate" | "Red Velvet" | "Strawberry" | "Pistachio" (choose closest visual match)
-        - color: Hex code string for the base frosting color.
+        - baseFlavor: "Vanilla" | "Chocolate" | "Red Velvet" | "Strawberry" | "Pistachio" (choose closest visual match. Red/Pink -> Red Velvet/Strawberry, Brown -> Chocolate, White -> Vanilla, Green -> Pistachio).
+        - color: Hex code string for the base frosting color (e.g. "#FFC0CB"). Capture the DOMINANT frosting color.
         - toppings: Array of strings. Options: "Cherry", "Blueberry", "Sprinkles", "Golden Pearl". (Include if visible).
         - scale: number between 0.8 and 1.5 (estimate cake size/height).
         - tiers: number (1, 2, or 3).

@@ -1,24 +1,37 @@
+/**
+ * app/globals.css
+ *
+ * Global stylesheet for Sweet N Sugary.
+ * - Imports Tailwind CSS layers (base, components, utilities).
+ * - Registers custom font variables from layout.tsx.
+ * - Defines scroll behaviour and shared utility animations
+ *   used across landing page sections.
+ */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
+/* ─── Base Layer ──────────────────────────────────────────────── */
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Enables smooth anchor scrolling */
   }
 }
 
+/* ─── Utility Overrides ───────────────────────────────────────── */
 @layer utilities {
+
+  /* Balances text across multiple lines for better readability */
   .text-balance {
     text-wrap: balance;
   }
 }
+
+/* ─── Custom Font Mappings ────────────────────────────────────── */
+/* These map CSS variables (injected by next/font in layout.tsx)
+   to the standard Tailwind `font-serif` and `font-sans` classes. */
 
 .font-serif {
   font-family: var(--font-playfair), serif;
@@ -28,7 +41,10 @@
   font-family: var(--font-lato), sans-serif;
 }
 
-/* Custom Animations */
+/* ─── Scroll-triggered Entry Animations ──────────────────────── */
+/* Used on elements that need to animate in on page load/scroll.
+   Works in tandem with the MicroInteraction component (Framer Motion). */
+
 .fade-in-up {
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
@@ -42,6 +58,7 @@
   }
 }
 
+/* Staggered delay helpers for sequential animations */
 .delay-100 {
   animation-delay: 0.2s;
 }

@@ -106,6 +106,8 @@ async function migrate() {
           payment_status VARCHAR(20) DEFAULT 'unpaid',
           delivery_date DATE NOT NULL,
           special_instructions TEXT,
+          customer_name VARCHAR(100),
+          customer_email VARCHAR(100),
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);

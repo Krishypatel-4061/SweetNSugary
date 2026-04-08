@@ -1,51 +1,165 @@
-# Sweet N Sugary: Dream Project Report
+# 🎂 Sweet N Sugary — Home Bakery Web App
 
-## 1. Executive Summary
-**Sweet N Sugary** is a premium digital platform for a home-based bakery in Jamnagar, Gujarat. This project transforms a standard e-commerce site into a "Dream Project" by integrating advanced web programming, data science, and digital marketing strategies. The platform features a 3D Cake Builder, AI-powered inventory forecasting, and a comprehensive business dashboard.
+> **Jamnagar's premium home bakery** — Custom Cakes & Desserts, ordered online.
+> Built with **Next.js 14**, **React Three Fiber (3D)**, **Neon PostgreSQL**, and **Gemini AI**.
 
-## 2. Technical Architecture
+---
 
-### 2.1 Core Stack
-- **Frontend**: Next.js 14 (App Router), React, TypeScript, Tailwind CSS.
-- **Backend**: Server Actions, PostgreSQL (Neon DB).
-- **Authentication**: JWT-based session management.
-- **3D Visualization**: Three.js, React Three Fiber.
-- **AI/ML**: Google Gemini API (Visual Recognition), Weighted Moving Average (Inventory Forecasting).
+## 🌐 Live Demo
 
-### 2.2 Database Schema
-The Postgre database includes:
-- `users`: Customer and Admin management.
-- `products` & `ingredients`: Core catalog and inventory.
-- `inventory_logs`: Historical tracking for forecasting.
-- `custom_cake_builds`: JSON-rich storage for 3D designs.
-- `orders`: Transactional data.
+| URL | Notes |
+|-----|-------|
+| `http://localhost:3000` | Local development |
 
-## 3. Key Features by Phase
+### 🔑 Demo Login Credentials
 
-### Phase 1: UX & SEO (Digital Marketing)
-- **Micro-Interactions**: Implemented using `framer-motion` for a premium feel (fade-ins, hover effects).
-- **SEO**: Dynamic OpenGraph tags, JSON-LD Schema markup, and sitemap generation for maximum local visibility in Jamnagar.
+| Role | Email | Password |
+|------|-------|----------|
+| **Admin** | `admin@sweetnsugary.com` | `admin123` |
+| **Customer** | `user@sweetnsugary.com` | `user123` |
 
-### Phase 2: Advanced Web Programming
-- **3D Cake Builder**: A fully interactive 3D studio allowing customers to customize cake layers, flavors, and toppings.
-- **Real-time Price Engine**: Calculates costs dynamically based on user selections.
-- **Dynamic Menu**: Server-side rendered product categories with lazy loading.
+---
 
-### Phase 3: Data Science & Intelligence
-- **Smart Inventory Forecasting**: Uses **Weighted Moving Average (WMA)** to predict future ingredient usage (e.g., Flour, Sugar) based on historical logs.
-- **AI Snap-to-Spec**: A computer vision module that analyzes uploaded cake photos to automatically configure the 3D builder.
+## ✨ Key Features
 
-### Phase 4: Business Administration
-- **Order Kanban**: A visual drag-and-drop style board to manage order status (New -> Baking -> Ready).
-- **Financial Analytics**: Real-time aggregation of total revenue and average order value.
-- **WhatsApp Integration**: One-click customer updates directly from the dashboard.
+| Feature | Description |
+|---------|-------------|
+| 🏠 **Landing Page** | Animated hero, features, about, testimonials, Instagram gallery |
+| 🍰 **3D Cake Builder** | Real-time 3D configurator — pick flavor, tiers, size, toppings, edible prints |
+| 🤖 **AI Match** | Upload an inspiration photo → Gemini Vision auto-configures the cake |
+| 📋 **Menu** | Filterable product grid with categories |
+| 📦 **Admin Dashboard** | Kanban board showing orders by status (Pending → Baking → Ready → Completed) |
+| 💬 **WhatsApp Updates** | Admin sends pre-filled order status messages via WhatsApp |
+| 🔐 **Auth System** | JWT-based login with HTTP-only cookies, role-based access control |
+| 📱 **Responsive** | Mobile-first design with slide-down mobile navigation |
 
-## 4. Implementation Highlights
-- **Middleware Security**: Protected `/admin` routes using Next.js Middleware.
-- **Reusable Components**: Modular architecture (e.g., `MicroInteraction.tsx`, `OrderKanban.tsx`).
-- **Responsive Design**: Mobile-first approach for all customer-facing pages.
+---
 
-## 5. Future Scope
-- **Payment Gateway**: Integration with Razorpay/Stripe.
-- **Delivery Tracking**: Real-time rider tracking.
-- **User Personalization**: AI-recommended products based on order history.
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Styling** | Tailwind CSS + custom design tokens |
+| **3D Rendering** | React Three Fiber + @react-three/drei |
+| **Animation** | Framer Motion |
+| **Database** | Neon PostgreSQL (serverless) |
+| **Auth** | bcryptjs (hashing) + jsonwebtoken (JWT) + HTTP-only cookies |
+| **AI** | Google Gemini Vision API |
+| **Fonts** | Playfair Display (serif) + Lato (sans-serif) |
+
+---
+
+## 📁 Project Structure
+
+```
+sweetnsugary/
+├── app/
+│   ├── page.tsx              # Landing page (homepage)
+│   ├── layout.tsx            # Root layout (Navbar, Footer, fonts, SEO)
+│   ├── globals.css           # Global styles + animation utilities
+│   ├── login/                # Login page
+│   ├── menu/                 # Menu page + layout
+│   ├── builder/              # 3D Cake Builder page + server actions
+│   ├── contact/              # Contact page
+│   ├── admin/                # Admin dashboard + Kanban + products
+│   └── api/
+│       ├── auth/             # login, logout, me endpoints
+│       └── analyze-cake-image/ # Gemini AI image analysis endpoint
+├── components/
+│   ├── Navbar.tsx            # Responsive nav with auth-aware links
+│   ├── Footer.tsx            # Site footer with contact & social
+│   ├── MicroInteraction.tsx  # Reusable Framer Motion scroll-trigger wrapper
+│   ├── CakeBuilder.tsx       # 3D interactive cake configurator
+│   └── admin/
+│       ├── OrderKanban.tsx   # Drag-free Kanban board for orders
+│       └── WhatsAppButton.tsx # Pre-filled WhatsApp message action
+├── lib/
+│   ├── db.ts                 # Shared PostgreSQL connection pool
+│   └── auth.ts               # bcrypt + JWT + cookie session utilities
+├── scripts/
+│   ├── migrate-schema.ts     # Creates DB tables (run once)
+│   ├── seed-users.ts         # Seeds admin + demo user
+│   ├── seed-initial-data.ts  # Seeds products and categories
+│   └── seed-inventory.ts     # Seeds inventory records
+└── middleware.ts             # Edge middleware — protects /admin routes
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- A [Neon](https://neon.tech) PostgreSQL database (free tier works)
+
+### 1. Clone & Install
+```bash
+git clone <your-repo-url>
+cd sweetnsugary
+npm install
+```
+
+### 2. Configure Environment
+Create `.env.local`:
+```env
+DATABASE_URL="your-neon-postgres-connection-string"
+GEMINI_API_KEY="your-google-gemini-api-key"
+JWT_SECRET="a-long-random-secret-string"
+```
+
+### 3. Set Up Database
+```bash
+# Create tables
+npx ts-node scripts/migrate-schema.ts
+
+# Seed demo users
+npx ts-node scripts/seed-users.ts
+
+# Seed products
+npx ts-node scripts/seed-initial-data.ts
+```
+
+### 4. Run Development Server
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 🗄️ Database Schema
+
+| Table | Purpose |
+|-------|---------|
+| `users` | Stores accounts (admin + customers) with bcrypt-hashed passwords |
+| `products` | Menu items with name, category, price, images |
+| `orders` | Customer orders with status (pending/baking/ready/completed) |
+| `cake_designs` | Saved 3D cake configurations from the builder |
+| `inventory` | Stock levels for ingredients |
+
+---
+
+## 🔐 Authentication Flow
+
+1. User submits email + password on `/login`
+2. `/api/auth/login` verifies against DB using `bcrypt.compare`
+3. On success, a JWT is signed and stored as an **HTTP-only cookie** (`auth_token`)
+4. `middleware.ts` checks the cookie on every `/admin/*` request
+5. Server components verify the JWT using `getSession()` and check the `role` field
+
+---
+
+## 🤖 AI Cake Analysis Flow
+
+1. User uploads an inspiration photo in the Cake Builder
+2. Image is sent to `/api/analyze-cake-image` as `multipart/form-data`
+3. The server encodes the image to base64 and calls the **Gemini Vision API**
+4. Gemini returns structured JSON: `{ baseFlavor, color, scale, tiers, toppings }`
+5. The frontend applies these values to the 3D configurator state
+
+---
+
+*© Sweet N Sugary — Made with Love in Jamnagar, Gujarat 🍰*

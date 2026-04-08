@@ -1,33 +1,37 @@
+/**
+ * middleware.ts
+ *
+ * Next.js Edge Middleware — runs before every matching request.
+ * Guards the /admin route by checking for a valid auth_token cookie.
+ * If the cookie is missing, the user is redirected to the login page.
+ *
+ * Note: Deep JWT verification (role check) is performed inside the
+ * server components/pages themselves, since `jsonwebtoken` is a
+ * Node.js-only library and cannot run in the Edge Runtime.
+ */
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifyToken } from '@/lib/auth'; // We can't use node modules in edge runtime easily sometimes, but jwt-decode might work. 
-// Actually, verifiedToken uses 'jsonwebtoken' which might not work in Edge Runtime.
-// Standard middleware approach for Next.js with JWT: use 'jose' or just check cookie presence for now, 
-// and let the server components do the deep validation.
-// OR, we can just check if cookie exists.
-// Let's try to decode if possible, but 'jsonwebtoken' is often Node-only.
-// Safe bet: Check for cookie existence. If needed, verify role in layout/page.
 
 export function middleware(request: NextRequest) {
-    // 1. Check if it's an admin route
+    // Protect all routes under /admin
     if (request.nextUrl.pathname.startsWith('/admin')) {
         const token = request.cookies.get('auth_token')?.value;
 
+        // If no auth token exists, redirect to the login page
         if (!token) {
-            // Redirect to login
             const loginUrl = new URL('/login', request.url);
+            // Pass the original path so we can redirect back after login
             loginUrl.searchParams.set('from', request.nextUrl.pathname);
             return NextResponse.redirect(loginUrl);
         }
-
-        // Optional: Decode token to check role if we switch to 'jose' library
-        // For now, presence of token is the first gate. 
-        // The server components (Page/Layout) will verify validity and role.
     }
 
+    // Allow the request to proceed normally
     return NextResponse.next();
 }
 
+// Apply this middleware only to /admin and its sub-routes
 export const config = {
     matcher: '/admin/:path*',
 };
