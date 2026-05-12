@@ -1,4 +1,6 @@
 import pool from "@/lib/db";
+
+export const dynamic = 'force-dynamic';
 import MenuClient from "./MenuClient";
 
 // Fallback Data

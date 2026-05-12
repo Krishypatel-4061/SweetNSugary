@@ -1,4 +1,6 @@
 import pool from "@/lib/db";
+
+export const dynamic = 'force-dynamic';
 import AdminOrdersClient from "./AdminOrdersClient";
 
 // Fallback data for dev/demo if DB is empty or fails

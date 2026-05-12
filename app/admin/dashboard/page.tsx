@@ -1,4 +1,6 @@
 import pool from "@/lib/db";
+
+export const dynamic = 'force-dynamic';
 import { format, addDays } from "date-fns";
 import AdminDashboardClient from "./AdminDashboardClient";
 
